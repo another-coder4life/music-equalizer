@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Music Equalizer Effect</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .container {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #191919;
+            }
+
+            .equalizer {
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                height: 400px;
+                width: 600px;
+                background-color: #aaaaaa;
+                padding: 1rem;
+            }
+
+            .bar {
+                display: inline-block;
+                width: 25px;
+                background-color: #191919;
+                margin: 0 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="equalizer">
+                <div id="bar1" class="bar"></div>
+                <div id="bar2" class="bar"></div>
+                <div id="bar3" class="bar"></div>
+                <div id="bar4" class="bar"></div>
+                <div id="bar5" class="bar"></div>
+                <div id="bar6" class="bar"></div>
+                <div id="bar7" class="bar"></div>
+                <div id="bar8" class="bar"></div>
+            </div>
+            <script>
+                animate(document.getElementById('bar1'), [350, 250, 310, 150]);
+                animate(document.getElementById('bar2'), [50, 150, 100, 350]);
+                animate(document.getElementById('bar3'), [300, 200, 250, 100]);
+                animate(document.getElementById('bar4'), [375, 145, 215, 95]);
+                animate(document.getElementById('bar5'), [75, 115, 80, 235]);
+                animate(document.getElementById('bar6'), [175, 45, 195, 115]);
+                animate(document.getElementById('bar7'), [215, 145, 300, 95]);
+                animate(document.getElementById('bar8'), [55, 345, 145, 250]);
+
+                function animate(element, heights) {
+                    let currentHeight = 0;
+                    let loop = 0;
+
+                    setInterval(function() {
+                        if (currentHeight === heights[loop]) {
+                            loop++;
+
+                            if (!heights[loop]) {
+                                loop = 0;
+                            }
+                        } else {
+                            if (currentHeight > heights[loop]) {
+                                currentHeight--;
+                            } else {
+                                currentHeight++;
+                            }
+
+                            element.style.height = currentHeight + 'px';
+                        }
+                    }, 5);
+                }
+            </script>
+        </div>
+    </body>
+</html>
